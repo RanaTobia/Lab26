@@ -1,0 +1,30 @@
+﻿@model ShopDbContext
+@{
+    ViewData["Title"] = "Buy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1>Welcom @ViewBag.UserName  !!</h1>
+
+<table class="table" >
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>OrderQuantity</th>
+        <th>ItemQuantity</th>
+        <th>Credit</th>
+
+
+    </tr>
+    <tr>
+        <td>@ViewBag.Id </td>
+        <td>@ViewBag.Name </td>
+        <td>@ViewBag.Price</td>
+        <td>@ViewBag.Quantity</td>
+        <td>@ViewBag.ItemQuantity</td>
+        <td>@ViewBag.Founds</td>
+</tr>
+
+</table>

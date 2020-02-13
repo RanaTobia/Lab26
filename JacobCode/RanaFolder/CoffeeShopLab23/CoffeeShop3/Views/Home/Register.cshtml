@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Register</h1>
+
+<form asp-controller="Home" asp-action="MakeNewUser">
+    <div class="form-group">
+        <label>UserName</label>
+        <input type="text" class="form-control" name="username" />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" />
+    </div>
+    <div class="form-group">
+        <label>DateOfBirth</label>
+        <input type="date" class="form-control" name="DateOfBirth" required />
+    </div>
+    <div class="form-group">
+        <label>PhoneNumber</label>
+        <input type="text" class="form-control" name="PhoneNumber" />
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" />
+    </div>
+    <div class="form-group">
+        <label>Password Confirmation</label>
+        <input type="password" class="form-control" name="Password Confirmation" />
+    </div>
+
+    <p>Please select your gender:</p>
+    <input type="radio" name="gender" value="male"> Male<br>
+    <input type="radio" name="gender" value="female"> Female<br>
+
+    <p>
+        Please Select Your County:
+        <select name="Counrty">
+            <option>usa</option>
+            <option>Italy</option>
+            <option>Canada</option>
+        </select>
+    </p>
+
+    <div class="form-group">
+        <input type="submit" class="form-control btn btn-primary" />
+    </div>
+
+
+</form>

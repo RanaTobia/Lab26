@@ -1,0 +1,79 @@
+﻿
+@model ShopDbContext
+
+
+@{
+    ViewData["Title"] = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var shoppingItems = (List<Items>)Model.Items.ToList();
+    var userIds = (List<Users>)Model.Users.ToList();
+}
+
+
+<h1>Shop</h1>
+
+<table class="table">
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+
+
+    </tr>
+  
+        @foreach (Items Item in shoppingItems)
+        {
+            <form asp-controller="Home" asp-action="BUY">
+                <tr>
+                    <td>@Item.Id </td>
+                    <td>@Item.Name </td>
+                    <td>@Item.Description</td>
+                    <td>@Item.Price </td>
+
+                    <!--use the name attribute to map this text input to our parameter in the back end controller-->
+                    @*<input type="hidden" name="MyCookie" value="@ViewBag.MyCookie" />*@
+
+                    @if ((bool)TempData["isUserLogin"] == true)
+                    {
+                        <td><input type="number" name="quantity" min="1" max="5"></td>
+                        <input type="hidden" name="Id" value="@Item.Id" />
+                        <input type="hidden" name="Name" value="@Item.Name" />
+                        <input type="hidden" name="Description" value="@Item.Description" />
+                        <input type="hidden" name="Price" value="@Item.Price " />
+                        <input type="hidden" name="UserId" value="" />
+                        <td><input type="submit" /></td>
+                    }
+                    @*<button href="@Url.Action("Buy", "Home", new { item = Item })">Buy</button>*@
+                    @*<td><input type="submit" title="Buy" value="Buy" onclick="location.href='@Url.Action("Buy", "Home", @Model.Items)'" /></td>*@
+
+</form>
+
+
+        }
+    </tr>
+
+    @*@if ((bool)TempData["isUserLogin"] != true)
+    {
+
+        @foreach (Items Item in shoppingItems)
+        {
+
+            <tr>
+                <td>@Item.Id </td>
+                <td>@Item.Name </td>
+                <td>@Item.Description </td>
+                <td>@Item.Price </td>
+
+            </tr>
+        }
+    }*@
+</table>
+
+
+@*<ol id="orderProcess">
+    <li><span class="step-number"></span><a href="~/">Choose Item</a></li>
+    <li><span class="step-number"></span><a href="~/Order/1">Place Order</a></li>
+    <li class="current"><span class="step-number"></span>Review Cart</li>
+</ol>*@
